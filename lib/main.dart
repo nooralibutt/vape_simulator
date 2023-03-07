@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vape_simulator/screens/selection_screens/choose_bg_screen.dart';
+import 'package:vape_simulator/utils/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,34 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
-        ),
+    return ScreenUtilInit(
+      designSize: const Size(1242, 2688),
+      builder: (BuildContext context, Widget? child) => MaterialApp(
+        title: 'Vape Simulator',
+        theme: AppTheme.buildTheme(),
+        home: const ChooseBgScreen(),
       ),
     );
   }
