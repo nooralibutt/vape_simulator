@@ -12,9 +12,9 @@ class AppTheme {
     return baseData.copyWith(
       primaryColor: primary,
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      elevatedButtonTheme: ElevatedButtonThemeData(
+      elevatedButtonTheme: const ElevatedButtonThemeData(
         style: ButtonStyle(
-          backgroundColor: const MaterialStatePropertyAll<Color>(Colors.white),
+          backgroundColor: MaterialStatePropertyAll<Color>(Colors.white),
         ),
       ),
     );
