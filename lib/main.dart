@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vape_simulator/screens/selection_screens/choose_bg_screen.dart';
 import 'package:vape_simulator/utils/app_theme.dart';
+import 'package:vape_simulator/utils/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         title: 'Vape Simulator',
         theme: AppTheme.buildTheme(),
         home: const ChooseBgScreen(),
+        routes: routes,
       ),
     );
   }
