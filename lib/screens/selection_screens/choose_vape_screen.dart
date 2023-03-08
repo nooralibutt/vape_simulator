@@ -16,6 +16,12 @@ class _ChooseVapeScreenState extends State<ChooseVapeScreen> {
   final controller = PageController();
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
