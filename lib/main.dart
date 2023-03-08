@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:vape_simulator/screens/selection_screens/choose_vape_screen.dart';
+import 'package:vape_simulator/screens/selection_screens/choose_flavour_screen.dart';
 import 'package:vape_simulator/utils/app_theme.dart';
 import 'package:vape_simulator/utils/routes.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, Widget? child) => MaterialApp(
         title: 'Vape Simulator',
         theme: AppTheme.buildTheme(),
-        home: const ChooseVapeScreen(),
+        home: const ChooseFlavourScreen(),
         routes: routes,
       ),
     );
