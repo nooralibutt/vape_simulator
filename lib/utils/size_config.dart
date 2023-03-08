@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VerticalSpacing extends StatelessWidget {
   final double of;
-  const VerticalSpacing({super.key, this.of = 20});
+  const VerticalSpacing({super.key, this.of = 40});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class VerticalSpacing extends StatelessWidget {
 
 class HorizontalSpacing extends StatelessWidget {
   final double of;
-  const HorizontalSpacing({super.key, this.of = 20});
+  const HorizontalSpacing({super.key, this.of = 40});
 
   @override
   Widget build(BuildContext context) {
