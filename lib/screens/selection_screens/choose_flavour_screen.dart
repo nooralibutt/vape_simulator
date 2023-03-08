@@ -5,6 +5,7 @@ import 'package:vape_simulator/widgets/base_scaffold.dart';
 import 'package:vape_simulator/widgets/my_elevated_button.dart';
 
 class ChooseFlavourScreen extends StatelessWidget {
+  static const String routeName = "/ChooseFlavourScreen";
   const ChooseFlavourScreen({Key? key}) : super(key: key);
 
   @override
