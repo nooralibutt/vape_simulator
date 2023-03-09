@@ -1,4 +1,4 @@
-package com.example.vape_simulator
+package com.vape.smoke.simulation.flavor
 
 import io.flutter.embedding.android.FlutterActivity
 

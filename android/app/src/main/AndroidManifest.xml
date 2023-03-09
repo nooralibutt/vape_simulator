@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.vape_simulator">
+    package="com.vape.smoke.simulation.flavor">
    <application
         android:label="vape_simulator"
         android:name="${applicationName}"
