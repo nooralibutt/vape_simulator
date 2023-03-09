@@ -104,7 +104,7 @@ class Particle {
     remainingLife = life;
 
     for (int i = 80; i < 100; i++) {
-      palette.add(color);
+      palette.add(color.withOpacity(0.5));
     }
 
     color = palette[0];
