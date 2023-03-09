@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:vape_simulator/provider/purchase_item_provider.dart';
+import 'package:vape_simulator/screens/selection_screens/choose_flavour_screen.dart';
 import 'package:vape_simulator/utils/my_audio_player.dart';
 import 'package:vape_simulator/utils/size_config.dart';
 import 'package:vape_simulator/widgets/base_scaffold.dart';
@@ -46,14 +47,17 @@ class GameScreen extends StatelessWidget {
               bottom: 50,
               right: 20,
               child: GestureDetector(
-                onTap: () => rewardedDialog(
-                    context: context,
-                    title: 'Earn Points',
-                    message:
-                        'Would you like to watch a Video Ad to earn 200 extra Vape points',
-                    onTap: (context) => context
-                        .read<PurchaseItemProvider>()
-                        .earnMoney(context)),
+                onTap: () {
+                  moveToCartScreen(context);
+                  // rewardedDialog(
+                  //   context: context,
+                  //   title: 'Earn Points',
+                  //   message:
+                  //       'Would you like to watch a Video Ad to earn 200 extra Vape points',
+                  //   onTap: (context) => context
+                  //       .read<PurchaseItemProvider>()
+                  //       .earnMoney(context));
+                },
                 child: Image.asset('assets/images/cart.png', height: 50),
               ),
             ),
@@ -84,5 +88,10 @@ class GameScreen extends StatelessWidget {
         barrierDismissible: false,
         context: context,
         builder: (context) => const MusicDialog(text: 'Sound Controls'));
+  }
+
+  void moveToCartScreen(BuildContext context) {
+    MyAudioPlayer.instance.playButtonTapSound();
+    Navigator.pushReplacementNamed(context, ChooseFlavourScreen.routeName);
   }
 }

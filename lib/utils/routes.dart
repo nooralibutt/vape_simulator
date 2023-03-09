@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vape_simulator/screens/game/game_screen.dart';
+import 'package:vape_simulator/screens/purchase_Item/purchase_item_screen.dart';
 import 'package:vape_simulator/screens/selection_screens/choose_bg_screen.dart';
 import 'package:vape_simulator/screens/selection_screens/choose_flavour_screen.dart';
 import 'package:vape_simulator/screens/selection_screens/choose_vape_screen.dart';
@@ -9,4 +10,5 @@ final Map<String, WidgetBuilder> routes = {
   ChooseVapeScreen.routeName: (context) => const ChooseVapeScreen(),
   ChooseFlavourScreen.routeName: (context) => const ChooseFlavourScreen(),
   GameScreen.routeName: (context) => const GameScreen(),
+  PurchaseItemScreen.routeName: (context) => const PurchaseItemScreen(),
 };

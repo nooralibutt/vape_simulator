@@ -103,5 +103,4 @@ void buyItem(BuildContext context, Item item) {
       content: Text("You Don't have Enough Points"),
     ));
   }
-  Navigator.of(context).pop();
 }
