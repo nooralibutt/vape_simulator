@@ -8,7 +8,7 @@ import 'package:vape_simulator/utils/prefs.dart';
 class PurchaseItemProvider extends ChangeNotifier {
   int backgroundImg = 1;
   int vapeImg = 1;
-  Item? _item;
+  Item _item = Item.allFlavour[0];
   bool isPressed = false;
   double flavour = 320;
   int percent = 0;
@@ -17,12 +17,12 @@ class PurchaseItemProvider extends ChangeNotifier {
   int saveScore = Prefs.instance.getScore();
   int _count = 0;
 
-  set item(Item? value) {
+  set item(Item value) {
     _item = value;
     notifyListeners();
   }
 
-  Item get getItem => _item ?? Item('green', Colors.red, 2000);
+  Item get getItem => _item;
 
   void onPress() async {
     isPressed = true;
@@ -77,7 +77,7 @@ class PurchaseItemProvider extends ChangeNotifier {
   }
 
   void freeRefill(BuildContext context) {
-    flavour = 140;
+    flavour = 320;
     // AdManager.instance.showCountedInterstitial();
     Navigator.pop(context);
     notifyListeners();
@@ -102,5 +102,10 @@ class PurchaseItemProvider extends ChangeNotifier {
       // AdManager.instance.showCountedInterstitial();
       _count = 1;
     }
+  }
+
+  void selectBgImage(int index) {
+    backgroundImg = index;
+    notifyListeners();
   }
 }

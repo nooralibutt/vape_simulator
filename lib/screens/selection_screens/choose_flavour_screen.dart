@@ -35,8 +35,9 @@ class ChooseFlavourScreen extends StatelessWidget {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(32.r)),
-                    color: Colors.white.withOpacity(0.15)),
+                  borderRadius: BorderRadius.all(Radius.circular(32.r)),
+                  color: Colors.white.withOpacity(0.15),
+                ),
                 child: Column(
                   children: [
                     const VerticalSpacing(),
@@ -54,9 +55,10 @@ class ChooseFlavourScreen extends StatelessWidget {
                         itemCount: allFlavour.length,
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 12.0,
-                                mainAxisSpacing: 25.0),
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 12.0,
+                          mainAxisSpacing: 25.0,
+                        ),
                         itemBuilder: (BuildContext context, int index) {
                           return GestureDetector(
                               child: Container(
@@ -64,22 +66,26 @@ class ChooseFlavourScreen extends StatelessWidget {
                                 height: 350,
                                 color: Colors.grey.withOpacity(0.4),
                                 child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text(allFlavour[index].flavour,
-                                          style: style),
-                                      Container(
-                                          width: 50,
-                                          height: 70,
-                                          color: allFlavour[index].color),
-                                      Text('Buy For \$${allFlavour[index].buy}',
-                                          style: style),
-                                    ]),
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(allFlavour[index].flavour,
+                                        style: style),
+                                    Container(
+                                      width: 50,
+                                      height: 70,
+                                      color: allFlavour[index].color,
+                                    ),
+                                    Text(
+                                      'Buy For \$${allFlavour[index].buy}',
+                                      style: style,
+                                    ),
+                                  ],
+                                ),
                               ),
                               onTap: () async {
                                 MyAudioPlayer.instance.playButtonTapSound();
-                                await purchaseConfirmDialogbox(
+                                await purchaseConfirmDialog(
                                     context,
                                     'Shopping',
                                     'Would you like to Equip ${allFlavour[index].flavour}',
@@ -104,11 +110,10 @@ class ChooseFlavourScreen extends StatelessWidget {
     );
   }
 
-  Future purchaseConfirmDialogbox(
+  Future purchaseConfirmDialog(
       BuildContext context, String title, String message, Item item) {
     final style = Theme.of(context).textTheme.titleMedium!.copyWith(
         fontSize: 16, color: Colors.blue, fontWeight: FontWeight.w900);
-    // set up the button
     Widget okButton = TextButton(
       child: const Text("Yes"),
       onPressed: () => buyItem(context, item),
@@ -121,9 +126,11 @@ class ChooseFlavourScreen extends StatelessWidget {
     AlertDialog alert = AlertDialog(
       title: Text(title, style: style.copyWith(fontSize: 30)),
       backgroundColor: Colors.grey.withOpacity(0.3),
-      content: Text(message,
-          style: style.copyWith(
-              fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white)),
+      content: Text(
+        message,
+        style: style.copyWith(
+            fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white),
+      ),
       actions: [okButton, cancelButton],
     );
 
@@ -131,9 +138,7 @@ class ChooseFlavourScreen extends StatelessWidget {
       context: context,
       barrierColor: Colors.black.withOpacity(0.6),
       barrierDismissible: false,
-      builder: (BuildContext context) {
-        return alert;
-      },
+      builder: (BuildContext context) => alert,
     );
   }
 }

@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:vape_simulator/provider/purchase_item_provider.dart';
 import 'package:vape_simulator/screens/game/components/FlavourJuiceContainer.dart';
-import 'package:vape_simulator/screens/purchase_Item/purchase_item_screen.dart';
 import 'package:vape_simulator/screens/selection_screens/choose_flavour_screen.dart';
 import 'package:vape_simulator/utils/my_audio_player.dart';
 import 'package:vape_simulator/utils/size_config.dart';
 import 'package:vape_simulator/widgets/base_scaffold.dart';
 import 'package:vape_simulator/widgets/custom_dialog.dart';
+import 'package:vape_simulator/widgets/smoke.dart';
 
 class GameScreen extends StatelessWidget {
   static const String routeName = "/GameScreen";
@@ -97,8 +97,22 @@ class GameScreen extends StatelessWidget {
                   onLongPressStart: (_) => onTap(context),
                   onLongPressEnd: (_) => provider.onEnd(),
                   child:
-                      Image.asset('assets/images/power_btn.png', height: 50)),
+                      Image.asset('assets/images/power_btn.png', height: 60)),
             ),
+            Selector<PurchaseItemProvider, bool>(
+              selector: (_, provider) => provider.smoke,
+              builder: (_, isShowSmoke, __) {
+                if (isShowSmoke) {
+                  return Positioned(
+                    top: -115,
+                    left: 0,
+                    right: 0,
+                    child: Smoke(size: MediaQuery.of(context).size),
+                  );
+                }
+                return const SizedBox();
+              },
+            )
           ],
         ),
       ),
@@ -108,7 +122,7 @@ class GameScreen extends StatelessWidget {
   void onTap(BuildContext context) async {
     final provider = context.read<PurchaseItemProvider>();
     if (provider.flavourFinish()) {
-      Navigator.pushNamed(context, PurchaseItemScreen.routeName);
+      Navigator.pushNamed(context, ChooseFlavourScreen.routeName);
     } else {
       provider.onPress();
     }

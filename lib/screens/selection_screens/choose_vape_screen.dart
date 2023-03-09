@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:vape_simulator/provider/purchase_item_provider.dart';
+import 'package:vape_simulator/screens/selection_screens/choose_flavour_screen.dart';
 import 'package:vape_simulator/utils/size_config.dart';
 import 'package:vape_simulator/widgets/base_scaffold.dart';
 import 'package:vape_simulator/widgets/my_elevated_button.dart';
@@ -54,8 +57,11 @@ class _ChooseVapeScreenState extends State<ChooseVapeScreen> {
                     Expanded(
                       child: PageView(
                         controller: controller,
+                        onPageChanged: (index) => context
+                            .read<PurchaseItemProvider>()
+                            .vapeImg = index + 1,
                         children: List.generate(
-                          3,
+                          4,
                           (index) => Image.asset(
                               'assets/images/vapes/${index + 1}.png'),
                         ),
@@ -70,7 +76,10 @@ class _ChooseVapeScreenState extends State<ChooseVapeScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: MyElevatedButton(title: 'Select', onPress: () {}),
+      floatingActionButton: MyElevatedButton(
+          title: 'Select',
+          onPress: () => Navigator.pushReplacementNamed(
+              context, ChooseFlavourScreen.routeName)),
     );
   }
 }
