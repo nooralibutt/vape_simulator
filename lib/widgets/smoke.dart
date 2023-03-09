@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 class SmokeParticles extends StatefulWidget {
   final Size size;
-  const SmokeParticles({Key? key, required this.size}) : super(key: key);
+  final Color color;
+  const SmokeParticles({Key? key, required this.size, required this.color})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -22,7 +24,7 @@ class _SmokeParticlesState extends State<SmokeParticles>
 
     //Generate particles
     List.generate(100, (i) {
-      particleSystem.add(Particle(widget.size));
+      particleSystem.add(Particle(widget.size, widget.color));
     });
 
     animationController =
@@ -35,7 +37,7 @@ class _SmokeParticlesState extends State<SmokeParticles>
               // Restored particle
               if (particleSystem[i].remainingLife < 0 ||
                   particleSystem[i].radius < 0) {
-                particleSystem[i] = Particle(widget.size);
+                particleSystem[i] = Particle(widget.size, widget.color);
               }
             }
           })
@@ -93,7 +95,7 @@ class Particle {
   late Size screenSize;
   var palette = <Color>[];
 
-  Particle(this.screenSize) {
+  Particle(this.screenSize, this.color) {
     Random rd = Random();
     speed = Offset(-5 + rd.nextDouble() * 12, 15.0 + rd.nextDouble() * 12);
     location = Offset(screenSize.width / 2, 180);
@@ -102,7 +104,7 @@ class Particle {
     remainingLife = life;
 
     for (int i = 80; i < 100; i++) {
-      palette.add(Colors.white);
+      palette.add(color);
     }
 
     color = palette[0];

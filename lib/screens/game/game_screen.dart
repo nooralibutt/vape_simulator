@@ -106,7 +106,10 @@ class GameScreen extends StatelessWidget {
                     top: -115,
                     left: 0,
                     right: 0,
-                    child: SmokeParticles(size: MediaQuery.of(context).size),
+                    child: SmokeParticles(
+                      size: MediaQuery.of(context).size,
+                      color: provider.getItem.color,
+                    ),
                   );
                 }
                 return const SizedBox();
