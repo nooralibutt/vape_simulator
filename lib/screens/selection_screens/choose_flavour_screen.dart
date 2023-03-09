@@ -73,7 +73,7 @@ class ChooseFlavourScreen extends StatelessWidget {
                                         style: style),
                                     Container(
                                       width: 50,
-                                      height: 70,
+                                      height: 150.h,
                                       color: allFlavour[index].color,
                                     ),
                                     Text(
