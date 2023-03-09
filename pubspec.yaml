@@ -23,6 +23,29 @@ dev_dependencies:
 
   flutter_lints: ^2.0.1
 
+#  flutter_launcher_icons: ^0.12.0
+#  flutter_app_name: ^0.1.1
+###  flutter pub run flutter_app_name
+#flutter_app_name:
+#  name: "Vape Simulation"
+
+
+#  flutter pub run flutter_launcher_icons:main
+#flutter_icons:
+#  android: "launcher_icon"
+#  ios: true
+#  image_path: "assets/icon.jpg"
+
+##  flutter pub run flutter_native_splash:create
+#flutter_native_splash:
+#  color: "#FFFFFF"
+#  android: true
+#  ios: true
+#  image: 'assets/splash.jpg'
+#  android_gravity: fill
+#  ios_content: fill
+
+
 flutter:
 
   uses-material-design: true
