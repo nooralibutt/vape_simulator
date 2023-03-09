@@ -95,7 +95,7 @@ void buyItem(BuildContext context, Item item) {
   final score = Prefs.instance.getScore();
   Navigator.of(context).pop();
   if (score >= item.buy) {
-    final provider = context.read<PurchaseItemProvider>();
+    final provider = context.read<GameProvider>();
     provider.item = item;
     provider.decrementPrice(item.buy);
   } else {

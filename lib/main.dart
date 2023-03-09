@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(1242, 2688),
       builder: (BuildContext context, Widget? child) => ListenableProvider(
-        create: (BuildContext context) => PurchaseItemProvider(),
+        create: (BuildContext context) => GameProvider(),
         child: MaterialApp(
           title: 'Vape Simulator',
           theme: AppTheme.buildTheme(),

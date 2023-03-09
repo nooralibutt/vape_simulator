@@ -57,9 +57,8 @@ class _ChooseVapeScreenState extends State<ChooseVapeScreen> {
                     Expanded(
                       child: PageView(
                         controller: controller,
-                        onPageChanged: (index) => context
-                            .read<PurchaseItemProvider>()
-                            .vapeImg = index + 1,
+                        onPageChanged: (index) =>
+                            context.read<GameProvider>().vapeImg = index + 1,
                         children: List.generate(
                           4,
                           (index) => Image.asset(
@@ -67,7 +66,18 @@ class _ChooseVapeScreenState extends State<ChooseVapeScreen> {
                         ),
                       ),
                     ),
-                    const VerticalSpacing(of: 300),
+                    const VerticalSpacing(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Icon(Icons.arrow_circle_left),
+                          Icon(Icons.arrow_circle_right),
+                        ],
+                      ),
+                    ),
+                    const VerticalSpacing(of: 280),
                   ],
                 ),
               ),

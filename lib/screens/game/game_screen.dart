@@ -16,7 +16,7 @@ class GameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.read<PurchaseItemProvider>();
+    final provider = context.read<GameProvider>();
     return Scaffold(
       body: BgImage(
         imagePath: 'assets/images/backgrounds/${provider.backgroundImg}.png',
@@ -28,7 +28,7 @@ class GameScreen extends StatelessWidget {
                 children: [
                   Image.asset('assets/images/dollar.png', height: 50),
                   const HorizontalSpacing(),
-                  Selector<PurchaseItemProvider, int>(
+                  Selector<GameProvider, int>(
                     selector: (context, provider) => provider.saveScore,
                     builder: (_, score, __) {
                       return Text(
@@ -57,9 +57,8 @@ class GameScreen extends StatelessWidget {
                       title: 'Earn Points',
                       message:
                           'Would you like to watch a Video Ad to earn 200 extra Vape points',
-                      onTap: (context) => context
-                          .read<PurchaseItemProvider>()
-                          .earnMoney(context));
+                      onTap: (context) =>
+                          context.read<GameProvider>().earnMoney(context));
                 },
                 child: Image.asset('assets/images/cart.png', height: 50),
               ),
@@ -82,7 +81,7 @@ class GameScreen extends StatelessWidget {
               bottom: 1745.h,
               left: 0.35.sw,
               right: 0.35.sw,
-              child: Selector<PurchaseItemProvider, double>(
+              child: Selector<GameProvider, double>(
                 selector: (_, provider) => provider.flavour,
                 builder: (_, flavour, __) {
                   return FlavourJuiceContainer(flavour: flavour.h);
@@ -94,12 +93,12 @@ class GameScreen extends StatelessWidget {
               left: 0.35.sw,
               right: 0.35.sw,
               child: GestureDetector(
-                  onLongPressStart: (_) => onTap(context),
-                  onLongPressEnd: (_) => provider.onEnd(),
-                  child:
-                      Image.asset('assets/images/power_btn.png', height: 60)),
+                onLongPressStart: (_) => onTap(context),
+                onLongPressEnd: (_) => provider.onEnd(),
+                child: Image.asset('assets/images/power_btn.png', height: 60),
+              ),
             ),
-            Selector<PurchaseItemProvider, bool>(
+            Selector<GameProvider, bool>(
               selector: (_, provider) => provider.smoke,
               builder: (_, isShowSmoke, __) {
                 if (isShowSmoke) {
@@ -107,12 +106,13 @@ class GameScreen extends StatelessWidget {
                     top: -115,
                     left: 0,
                     right: 0,
-                    child: Smoke(size: MediaQuery.of(context).size),
+                    child: SmokeParticles(size: MediaQuery.of(context).size),
                   );
                 }
                 return const SizedBox();
               },
-            )
+            ),
+            // SmokeParticles(size: MediaQuery.of(context).size),
           ],
         ),
       ),
@@ -120,7 +120,7 @@ class GameScreen extends StatelessWidget {
   }
 
   void onTap(BuildContext context) async {
-    final provider = context.read<PurchaseItemProvider>();
+    final provider = context.read<GameProvider>();
     if (provider.flavourFinish()) {
       Navigator.pushNamed(context, ChooseFlavourScreen.routeName);
     } else {

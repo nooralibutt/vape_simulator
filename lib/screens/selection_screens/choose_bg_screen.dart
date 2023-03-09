@@ -67,7 +67,7 @@ class BgImageListView extends StatelessWidget {
     return ListView(
       children: List.generate(
         6,
-        (index) => Consumer<PurchaseItemProvider>(
+        (index) => Consumer<GameProvider>(
           builder: (_, provider, __) {
             return GestureDetector(
               onTap: () => provider.selectBgImage(index + 1),

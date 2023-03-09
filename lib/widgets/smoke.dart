@@ -1,21 +1,19 @@
 import 'dart:math';
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class Smoke extends StatefulWidget {
+class SmokeParticles extends StatefulWidget {
   final Size size;
-  const Smoke({Key? key, required this.size}) : super(key: key);
+  const SmokeParticles({Key? key, required this.size}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _SmokeState();
+    return _SmokeParticlesState();
   }
 }
 
-class _SmokeState extends State<Smoke> with TickerProviderStateMixin {
+class _SmokeParticlesState extends State<SmokeParticles>
+    with TickerProviderStateMixin {
   late AnimationController animationController;
   final particleSystem = <Particle>[];
   @override
@@ -95,17 +93,15 @@ class Particle {
   late Size screenSize;
   var palette = <Color>[];
 
-  Particle(Size screenSize) {
+  Particle(this.screenSize) {
     Random rd = Random();
-
-    this.screenSize = screenSize;
     speed = Offset(-5 + rd.nextDouble() * 12, 15.0 + rd.nextDouble() * 12);
-    location = Offset(this.screenSize.width / 2, 180);
+    location = Offset(screenSize.width / 2, 180);
     radius = 50 + rd.nextDouble() * 40;
     life = 50 + rd.nextDouble() * 20;
     remainingLife = life;
 
-    for (int i = 90; i < 100; i++) {
+    for (int i = 80; i < 100; i++) {
       palette.add(Colors.white);
     }
 

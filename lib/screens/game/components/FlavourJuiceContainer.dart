@@ -9,7 +9,7 @@ class FlavourJuiceContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final item = Provider.of<PurchaseItemProvider>(context).getItem;
+    final item = Provider.of<GameProvider>(context).getItem;
     return Container(height: flavour, color: item.color.withOpacity(0.6));
   }
 }

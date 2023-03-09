@@ -5,7 +5,7 @@ import 'package:vape_simulator/models/items.dart';
 import 'package:vape_simulator/utils/my_audio_player.dart';
 import 'package:vape_simulator/utils/prefs.dart';
 
-class PurchaseItemProvider extends ChangeNotifier {
+class GameProvider extends ChangeNotifier {
   int backgroundImg = 1;
   int vapeImg = 1;
   Item _item = Item.allFlavour[0];
@@ -49,12 +49,17 @@ class PurchaseItemProvider extends ChangeNotifier {
 
   void onEnd() {
     smoke = true;
+    Future.delayed(const Duration(seconds: 5), () {
+      smoke = false;
+      notifyListeners();
+    });
+
     Timer.periodic(const Duration(milliseconds: 120), (Timer t) {
       {
         if (percent == 0) {
           MyAudioPlayer.instance.stopVapeSound();
           isPressed = false;
-          smoke = false;
+
           showAd();
           // AdManager.instance.showCountedInterstitial();
           t.cancel();
