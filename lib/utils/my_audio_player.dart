@@ -10,10 +10,12 @@ class MyAudioPlayer {
   final AudioPlayer _vapePlayer = AudioPlayer();
 
   void setAllSound() async {
-    await _vapePlayer.setSource(AssetSource('audio/vape_sound.wav'));
-    await _soundPlayer.setSource(AssetSource('audio/click_sound.wav'));
-    await _backgroundPlayer
-        .setSource(AssetSource('audio/background_sound.mp3'));
+    await _vapePlayer.setSourceUrl(
+        'https://github.com/nooralibutt/assets/raw/7d1a039465497d62a3a502c40e8ebe74e3d82106/vape_simulator/audio/vape_sound.wav');
+    await _soundPlayer.setSourceUrl(
+        'https://github.com/nooralibutt/assets/raw/7d1a039465497d62a3a502c40e8ebe74e3d82106/vape_simulator/audio/click_sound.mp3');
+    await _backgroundPlayer.setSourceUrl(
+        'https://github.com/nooralibutt/assets/raw/7d1a039465497d62a3a502c40e8ebe74e3d82106/vape_simulator/audio/background_sound.mp3');
   }
 
   void stopBackgroundSound() {
