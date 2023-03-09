@@ -6,9 +6,11 @@ import 'package:vape_simulator/utils/my_audio_player.dart';
 import 'package:vape_simulator/utils/prefs.dart';
 
 class PurchaseItemProvider extends ChangeNotifier {
+  int backgroundImg = 1;
+  int vapeImg = 1;
   Item? _item;
   bool isPressed = false;
-  double flavour = 140;
+  double flavour = 320;
   int percent = 0;
   int score = 0;
   bool smoke = false;
@@ -24,7 +26,7 @@ class PurchaseItemProvider extends ChangeNotifier {
 
   void onPress() async {
     isPressed = true;
-    // MyAudioPlayer.instance.playVapeSound();
+    MyAudioPlayer.instance.playVapeSound();
     do {
       if (flavour > 0) {
         score += 1;
