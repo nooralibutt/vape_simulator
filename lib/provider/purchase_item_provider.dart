@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:easy_service_manager/easy_service_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:vape_simulator/models/items.dart';
 import 'package:vape_simulator/utils/my_audio_player.dart';
@@ -10,7 +11,7 @@ class GameProvider extends ChangeNotifier {
   int vapeImg = 1;
   Item _item = Item.allFlavour[0];
   bool isPressed = false;
-  double flavour = 320;
+  double flavour = 255;
   int percent = 0;
   int score = 0;
   bool smoke = false;
@@ -61,7 +62,7 @@ class GameProvider extends ChangeNotifier {
           isPressed = false;
 
           showAd();
-          // AdManager.instance.showCountedInterstitial();
+          EasyServicesManager.instance.showCountedInterstitialAd();
           t.cancel();
         } else {
           MyAudioPlayer.instance.stopVapeSound();
@@ -83,7 +84,7 @@ class GameProvider extends ChangeNotifier {
 
   void freeRefill(BuildContext context) {
     flavour = 320;
-    // AdManager.instance.showCountedInterstitial();
+    EasyServicesManager.instance.showCountedInterstitialAd();
     Navigator.pop(context);
     notifyListeners();
   }
@@ -96,15 +97,16 @@ class GameProvider extends ChangeNotifier {
   }
 
   void earnMoney(BuildContext context) {
-    // AdManager.instance.showCountedInterstitial();
+    EasyServicesManager.instance.showInterstitialAd();
     Prefs.instance.incrementScore(score + 200);
     saveScore = Prefs.instance.getScore();
+    Navigator.pop(context);
     notifyListeners();
   }
 
   void showAd() {
     if (_count == 0) {
-      // AdManager.instance.showCountedInterstitial();
+      EasyServicesManager.instance.showCountedInterstitialAd();
       _count = 1;
     }
   }
