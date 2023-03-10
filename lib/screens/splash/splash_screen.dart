@@ -1,6 +1,8 @@
 import 'package:easy_service_manager/easy_service_manager.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:vape_simulator/screens/selection_screens/choose_bg_screen.dart';
+import 'package:vape_simulator/utils/ad_id_manager.dart';
 import 'package:vape_simulator/utils/strings.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -12,7 +14,7 @@ class SplashScreen extends StatelessWidget {
     await EasyServicesManager.instance.initialize(
       // appIconPath: 'assets/diamond_images/icon.png',
       adKeywords: Strings.adKeywords,
-      adIdManager: const TestAdIdManager(),
+      adIdManager: kDebugMode ? const TestAdIdManager() : const AdIdManager(),
       aboutAppDescription: Strings.aboutAppDescription,
       supportEmail: Strings.supportEmail,
       androidDeveloperName: Strings.android_developer_name,
