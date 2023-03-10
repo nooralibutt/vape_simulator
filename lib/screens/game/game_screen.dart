@@ -157,7 +157,7 @@ class VapeWidget extends StatelessWidget {
   }
 
   void onTap(BuildContext context) async {
-    if (provider.flavourFinish()) {
+    if (provider.isflavourFinished()) {
       Navigator.pushNamed(context, ChooseFlavourScreen.routeName);
     } else {
       provider.onPress();

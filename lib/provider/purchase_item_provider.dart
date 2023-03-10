@@ -16,7 +16,6 @@ class GameProvider extends ChangeNotifier {
   int score = 0;
   bool smoke = false;
   int saveScore = Prefs.instance.getScore();
-  int _count = 0;
 
   set item(Item value) {
     _item = value;
@@ -60,8 +59,6 @@ class GameProvider extends ChangeNotifier {
         if (percent == 0) {
           MyAudioPlayer.instance.stopVapeSound();
           isPressed = false;
-
-          showAd();
           EasyServicesManager.instance.showCountedInterstitialAd();
           t.cancel();
         } else {
@@ -74,7 +71,7 @@ class GameProvider extends ChangeNotifier {
     });
   }
 
-  bool flavourFinish() {
+  bool isflavourFinished() {
     if (flavour == 0) {
       return true;
     } else {
@@ -82,7 +79,7 @@ class GameProvider extends ChangeNotifier {
     }
   }
 
-  void freeRefill(BuildContext context) {
+  void refillFlavour(BuildContext context) {
     flavour = 320;
     EasyServicesManager.instance.showCountedInterstitialAd();
     Navigator.pop(context);
@@ -102,13 +99,6 @@ class GameProvider extends ChangeNotifier {
     saveScore = Prefs.instance.getScore();
     Navigator.pop(context);
     notifyListeners();
-  }
-
-  void showAd() {
-    if (_count == 0) {
-      EasyServicesManager.instance.showCountedInterstitialAd();
-      _count = 1;
-    }
   }
 
   void selectBgImage(int index) {
