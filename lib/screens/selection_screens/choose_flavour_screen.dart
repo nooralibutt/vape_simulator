@@ -1,3 +1,4 @@
+import 'package:easy_service_manager/easy_service_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vape_simulator/models/items.dart';
@@ -73,7 +74,7 @@ class ChooseFlavourScreen extends StatelessWidget {
                                         style: style),
                                     Container(
                                       width: 50,
-                                      height: 70,
+                                      height: 150.h,
                                       color: allFlavour[index].color,
                                     ),
                                     Text(
@@ -105,8 +106,10 @@ class ChooseFlavourScreen extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: MyElevatedButton(
           title: 'Select',
-          onPress: () =>
-              Navigator.pushReplacementNamed(context, GameScreen.routeName)),
+          onPress: () {
+            EasyServicesManager.instance.showCountedInterstitialAd();
+            Navigator.pushReplacementNamed(context, GameScreen.routeName);
+          }),
     );
   }
 

@@ -1,3 +1,4 @@
+import 'package:easy_service_manager/easy_service_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -53,8 +54,10 @@ class ChooseBgScreen extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: MyElevatedButton(
           title: 'Select',
-          onPress: () => Navigator.pushReplacementNamed(
-              context, ChooseVapeScreen.routeName)),
+          onPress: () {
+            EasyServicesManager.instance.showCountedInterstitialAd();
+            Navigator.pushReplacementNamed(context, ChooseVapeScreen.routeName);
+          }),
     );
   }
 }
