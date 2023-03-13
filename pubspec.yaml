@@ -18,6 +18,7 @@ dependencies:
   volume_control: ^0.1.5
   easy_service_manager: ^1.2.3
   flutter_native_splash: ^2.2.19
+  flutter_unity_widget: ^2022.2.0
 
 dev_dependencies:
   flutter_test:

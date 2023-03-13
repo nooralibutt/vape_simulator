@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:vape_simulator/provider/purchase_item_provider.dart';
-import 'package:vape_simulator/screens/splash/splash_screen.dart';
+import 'package:vape_simulator/unity_screen.dart';
 import 'package:vape_simulator/utils/app_theme.dart';
 import 'package:vape_simulator/utils/my_audio_player.dart';
 import 'package:vape_simulator/utils/prefs.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Vape Simulator',
           theme: AppTheme.buildTheme(),
-          home: const SplashScreen(),
+          home: const UnityScreen(),
           routes: routes,
         ),
       ),
