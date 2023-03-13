@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using FlutterUnityIntegration;
-using TMPro;
+using UnityEngine.UI;
 
 public class NameUpdater : MonoBehaviour, IEventSystemHandler
 {
 
     void Start()
     {
-        GetComponent<TextMeshProUGUI>().text = "Zaihd Khan";
+        GetComponent<Text>().text = "Zaihd Khan";
     }
 
     private void OnEnable()
@@ -52,6 +52,6 @@ public class NameUpdater : MonoBehaviour, IEventSystemHandler
     {
         UnityMessageManager.Instance.SendMessageToFlutter("UpdateName called");
 
-        GetComponent<TextMeshProUGUI>().text = message;
+        GetComponent<Text>().text = message;
     }
 }
